@@ -11,20 +11,50 @@
 </head>
 <body>
     <!-- Start Code -->
-    <main id="app">
+    <main id="app" class="container-fluid">
+        <h1 class="hide">Flashback</h1>
+        <header id="mainHeader" class="row">
+            <div id="menu" class="col-3">
+                <p class="boxhelper">Menu</p>
+            </div>
+            <div id="logo" class="col-6">
+                <p class="boxhelper">Logo</p>
+            </div>
+            <div id="search" class="col-3">
+                <p class="boxhelper">Login</p>
+            </div>
+        </header>
 
+        <section id="featured-section" class="row">
+            <h2 class="hide">Featured Movies</h2>
+            <div id="featured-movies" class="col-12">
+                <p class="boxhelper">Featured Movies</p>
+            </div>
+        </section>
 
+        <section id="movie-section" class="row">
+            <h2 class="hide">Movies</h2>
+            <div class="col-12 movie">
+                <p class="boxhelper">Movie</p>
+            </div>
 
+            <div class="col-12 movie">
+                <p class="boxhelper">Movie</p>
+            </div>
 
+            <div class="col-12 movie">
+                <p class="boxhelper">Movie</p>
+            </div>
+        </section>
 
-
-
-
-
-
-
-
-        
+        <footer id="mainFooter" class="row">
+            <div id="footer-logo" class="col-4 offset-4">
+                <p class="boxhelper">Logo</p>
+            </div>
+            <div id="copyright" class="col-12">
+                <p>&copy; {{ copyright }}</p>
+            </div>
+        </footer>
     </main>
     <!-- End Code -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

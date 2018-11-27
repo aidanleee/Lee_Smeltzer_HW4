@@ -2,3 +2,50 @@
 @import 'modules/vars';
 
 // add styling
+
+.boxhelper {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+.hide {
+    display: none;
+}
+
+#mainHeader {
+    background-color: $purple;
+    height: 50px;
+    p {
+        margin-top: 13px;
+    }
+}
+
+#featured-section {
+    height: 215px;
+    p {
+        height: 213px;
+        line-height: 180px;
+    }
+}
+
+.movie {
+    height: 215px;
+    margin-top: 5px;
+    p {
+        height: 213px;
+        line-height: 213px;
+    }
+}
+
+#mainFooter {
+    background-color: $grey;
+    margin-top: 5px;
+}
+
+#copyright {
+    p {
+        text-align: center;
+        color: white;
+    }
+}
