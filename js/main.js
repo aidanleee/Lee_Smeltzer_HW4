@@ -3,6 +3,7 @@
         el: '#app',
 
         data : {
+            copyright : "2018 Roku, Inc. All rights reserved."
 
         },
 
