@@ -67,5 +67,14 @@
     margin-top: 15px;
 }
 
+//media queries
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+    #mainHeader {
+        height: 70px;
+    }
+}
+
 
 
