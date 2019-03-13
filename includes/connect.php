@@ -1,13 +1,10 @@
 <?php
-$user = "root";
-$pass = "root";
-$url = "localhost";
-$db = "db_flashback";
+    $user = "root";
+    $pw = "root";
 
-$link = mysqli_connect($url, $user, $pass, $db, "8888");
-
-if(mysqli_connect_errno()) {
-	printf("Connect failed: %s\n", mysqli_connect_error());
-	exit();
-}
+    try {
+        $conn = new PDO('mysql:host=localhost;dbname=roku', $user,$pw);
+    } catch(PDOException $exception) {
+        echo 'connect error!' . $exception->getMessage();
+    }
 ?>
