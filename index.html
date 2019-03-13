@@ -1,74 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Flashback</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" media="screen" href="css/main.css"/>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Roku Flashback</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.2/vue-router.min.js"></script>
 </head>
 <body>
     <!-- Start Code -->
     <main id="app" class="container-fluid">
-        <h1 class="hide">Flashback</h1>
-        <header id="mainHeader" class="row">
-            <div id="menu" class="col-3 col-lg-6 offset-lg-3 order-lg-1">
-                <p class="boxhelper">Menu</p>
-            </div>
-            <div id="logo" class="col-6 col-lg-2">
-                <p class="boxhelper">Logo</p>
-            </div>
-            <div id="search" class="col-3 col-lg-1 order-lg-2">
-                <p class="boxhelper">Login</p>
-            </div>
-        </header>
+        <h1 class="hide">Roku Flashback</h1>
+        
+        <transition name="fade" mode="out-in">
+            <vue-router></vue-router>
+        </transition>
 
-        <section id="featured-section" class="row">
-            <h2 class="hide">Featured Movies</h2>
-            <div id="featured-movies" class="col-12">
-                <p class="boxhelper">Featured Movies</p>
-            </div>
-        </section>
-
-        <section id="movie-section" class="row">
-            <h2 class="hide">Movies</h2>
-            <div class="col-12 col-sm-4 movie">
-                <p class="boxhelper">Movie</p>
-            </div>
-
-            <div class="col-12 col-md-4 movie">
-                <p class="boxhelper">Movie</p>
-            </div>
-
-            <div class="col-12 col-md-4 movie">
-                <p class="boxhelper">Movie</p>
-            </div>
-            <div class="col-12 col-md-4 movie">
-                <p class="boxhelper">Movie</p>
-            </div>
-            <div class="col-12 col-md-4 movie">
-                <p class="boxhelper">Movie</p>
-            </div>
-            <div class="col-12 col-md-4 movie">
-                <p class="boxhelper">Movie</p>
-            </div>
-        </section>
-
-        <footer id="mainFooter" class="row">
-            <div id="footer-logo" class="col-4 offset-4">
-                <p class="boxhelper">Logo</p>
-            </div>
-            <div id="copyright" class="col-12">
-                <p>&copy; {{ copyright }}</p>
-            </div>
-        </footer>
     </main>
     <!-- End Code -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
