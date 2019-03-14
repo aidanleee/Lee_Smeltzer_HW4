@@ -13,7 +13,7 @@ require_once('connect.php');
       ':username' => $username
     )
   );
-
+  
   if ($user_set->fetchColumn() > 0) {
     $get_user_query = "SELECT * FROM tbl_user WHERE user_pass = :psw AND user_name = :username";
     $get_user_set = $pdo->prepare($get_user_query);

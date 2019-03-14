@@ -1,12 +1,13 @@
 
+import UsersComponent from './components/UsersComponent.js';
 import LoginComponent from './components/LoginComponent.js';
-
 
 let router = new VueRouter({
 
   routes: [
       { path: '/', redirect: { name: "login"} },
       { path: '/login', name: "login", component: LoginComponent },
+      { path: '/users', name: 'users', component: UsersComponent },
   ]
 });
 
@@ -16,23 +17,22 @@ const vm = new Vue({
     authenticated: false,
     administrator: false,
 
+    genericMessage: "hello from the parent",
+
     mockAccount: {
       username: "user",
       password: "password"
     },
 
     user: [],
-
-    //currentUser: {},
   },
 
   created: function() {
-  console.log("parent is live");
+    console.log("parent is live");
 
     if (localStorage.getItem("cachedUser")) {
       let user = JSON.parse(localStorage.getItem("cachedUser"));
       this.authenticated = true;
-      // params not setting properly, so this route needs to be debugged a bit...
       this.$router.push({ name: "home", params: { currentuser: user }});
     } else {
       this.$router.push({ path: "/login"} );
