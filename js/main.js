@@ -1,31 +1,70 @@
-// components go here
-import HomeComponent from './components/HomeComponent.js';
+
 import LoginComponent from './components/LoginComponent.js';
 
-const routes = [
-    { path: '/', redirect: { name: "home"} },
-    { path: '/home', name: "home", component: HomeComponent },
-    { path: '/login', name: "login", component: HomeComponent },
-];
 
-const router = new VueRouter({
-    routes
+let router = new VueRouter({
+
+  routes: [
+      { path: '/', redirect: { name: "login"} },
+      { path: '/login', name: "login", component: LoginComponent },
+  ]
 });
 
-const vm = new Vue ({
+const vm = new Vue({
+ 
+  data: {
+    authenticated: false,
+    administrator: false,
 
-    data: {
-        message: "sup from vue!",
+    mockAccount: {
+      username: "user",
+      password: "password"
     },
 
-    created: function() {
-        console.log("parent is live");
+    user: [],
+
+    //currentUser: {},
+  },
+
+  created: function() {
+  console.log("parent is live");
+
+    if (localStorage.getItem("cachedUser")) {
+      let user = JSON.parse(localStorage.getItem("cachedUser"));
+      this.authenticated = true;
+      // params not setting properly, so this route needs to be debugged a bit...
+      this.$router.push({ name: "home", params: { currentuser: user }});
+    } else {
+      this.$router.push({ path: "/login"} );
+    }
+  },
+
+  methods: {
+    setAuthenticated(status, data) {
+      this.authenticated = status;
+      this.user = data;
     },
 
-    methods: {
+    logout() {
+      if (localStorage.getItem("cachedUser")) {
+        localStorage.removeItem("cachedUser");
+      }
+      this.$router.push({ path: "/login" });
+      this.authenticated = false;
+      
+      
+    }
+  },
 
-    },
-
-    router: router
-
+  router: router
 }).$mount("#app");
+
+router.beforeEach((to, from, next) => {
+  console.log('router guard fired!', to, from, vm.authenticated);
+
+  if (vm.authenticated == false) {
+    next("/login");
+  } else {
+    next();
+  }
+});
