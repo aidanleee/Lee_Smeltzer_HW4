@@ -6,6 +6,91 @@ body {
     font-size: 16px
 }
 
+/* SIGN IN */
+
+#signInBG {
+    position: absolute;
+    z-index: -1;
+    width:100vw;
+    height: 100vh;
+    background-image: url(../images/login_back_desk.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+/*
+#loginLogo {
+    height: 5vh;
+    width: auto;
+    margin: 8vh 0 2vh 0;
+    padding-left: 20px;
+}
+*/
+
+#loginLogo {
+    width: 76vw;
+    height: auto;
+    padding-top: 80px;
+    padding-bottom: 20px;
+}
+
+#signInBox {
+    height: 75vh;
+    background-color: rgba(0,0,0,0.75);
+    border-radius: 36px;
+}
+
+#signInInfo {
+    height: 65vh;
+    width: 100%;
+    margin-top: 8vh;
+}
+
+#signInInfo a {
+    color: #fafafa;
+}
+
+#signInInfo button {
+    background-color: #662d91;
+    border: none;
+}
+
+/* SIGN IN - TABLET */
+
+@media only screen and (min-width: 768px) {
+
+    #loginLogo {
+        width: 54vw;
+        padding-left: 8vw;
+    }
+
+}
+
+/* SIGN IN - DESKTOP */
+
+@media only screen and (min-width: 992px) {
+
+    #loginLogo {
+        width: 40vw;
+        padding-left: 8vw;
+    }
+
+}
+
+@media only screen and (min-width: 1400px) {
+
+    #signInInfo {
+        width: 60%;
+        margin-top: 10vh;
+        margin-left: 20%;
+    }
+
+}
+
+
+
 /* HEADER */
 
 .header {

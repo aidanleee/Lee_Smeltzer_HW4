@@ -1,5 +1,44 @@
 (() => {
     // component will go here
+
+    const LoginComponent = {
+        template:
+        `<div id="signInBG"></div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-1 col-md-2 col-lg-3"></div>
+                <div class="col-10 col-md-8 col-lg-6"><img src="images/roku_flashback.svg" id="loginLogo"></div>
+                <div class="col-1 col-md-2 col-lg-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-1 col-md-2 col-lg-3"></div>
+                <div class="col-10 col-md-8 col-lg-6" id="signInBox">
+                    <form class="text-center p-5" id="signInInfo">
+                        <p class="h2 mb-4">Sign In</p>							
+                        <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+                        <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">							
+                        <div class="d-flex justify-content-around">
+                            <div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                                    <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+                                </div>
+                            </div>
+                            <div>
+                                <a href="#">Forgot password?</a>
+                            </div>
+                        </div>
+                        <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+                        <p>Need an account?</p>
+                        <button class="btn btn-info btn-block my-4" type="submit">Register</button>
+                    </form>
+                </div>
+                <div class="col-1 col-md-2 col-lg-3"></div>
+            </div>
+        </div>`
+    }
+
     const HeaderComponent = {
         template:
         `<div class="row header">
@@ -229,6 +268,7 @@
         },
 
         components: {
+            'LoginComponent': LoginComponent,
             'HeaderComponent': HeaderComponent,
             'DecadeComponent': DecadeComponent,
             'MoviesComponent': MoviesComponent,
