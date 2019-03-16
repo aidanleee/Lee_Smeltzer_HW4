@@ -39,6 +39,82 @@
         </div>`
     }
 
+    const AdultsKidsComponent = {
+        template:
+        `<div id="akBG"></div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-1 col-md-2 col-lg-3"></div>
+                <div class="col-10 col-md-8 col-lg-6"><img src="images/roku_flashback.svg" id="loginLogo"></div>
+                <div class="col-1 col-md-2 col-lg-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-3 col-lg-3"></div>
+                <div class="col-6 col-lg-3">
+                        <button class="akButtons"><h2>Adults</h2></button>
+                </div>
+                <div class="col-3 d-lg-none"></div>
+                <div class="col-3 d-lg-none"></div>
+                <div class="col-6 col-lg-3">
+                        <button class="akButtons"><h2>KIDS</h2></button>
+                </div>
+                <div class="col-3 col-lg-3"></div>
+            </div>
+        </div>`
+    }
+
+    const ChooseProfileComponent = {
+        template:
+        `<div id="profileBG"></div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-1 col-md-2 col-lg-3"></div>
+                <div class="col-10 col-md-8 col-lg-6"><img src="images/roku_flashback.svg" id="loginLogo"></div>
+                <div class="col-1 col-md-2 col-lg-3"></div>
+            </div>
+    
+            <div class="row" id="profiles">
+                <div class="col-2 col-md-3"></div>
+                <div class="col-8 col-md-6">
+                    <div class="row">
+                        <div class="col-12 profileHeading">
+                            <h2>Choose your profile:</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 col-md-3">
+                            <a href="#">
+                                <img src="images/amy.svg" class="profileIcon">
+                                <p>Amy</p>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <a href="#">
+                                <img src="images/ryan.svg" class="profileIcon">
+                                <p>Ryan</p>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <a href="#">
+                                <img src="images/brendan.svg" class="profileIcon">
+                                <p>Brendan</p>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <a href="#">
+                                <img src="images/tiffany.svg" class="profileIcon">
+                                <p>Tiffany</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 col-md-3"></div>
+            </div>
+        </div>`
+    }
+
     const HeaderComponent = {
         template:
         `<div class="row header">
@@ -50,7 +126,7 @@
                 </div>	
             </div>
             <div class="col-2 col-md-1">
-                <img src="images/usericon.svg" class="userIcon">
+                <img src="images/amy.svg" class="userIcon">
             </div>
         </div>`
     };
@@ -269,10 +345,12 @@
 
         components: {
             'LoginComponent': LoginComponent,
+            'AdultsKidsComponent': AdultsKidsComponent,
+            'ChooseProfileComponent' : ChooseProfileComponent,
             'HeaderComponent': HeaderComponent,
             'DecadeComponent': DecadeComponent,
             'MoviesComponent': MoviesComponent,
-            'MovieInfoComponent': MovieInfoComponent,
+            'MovieInfoComponent': MovieInfoComponent,            
         },
 
         router: router

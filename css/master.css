@@ -91,6 +91,98 @@ body {
 
 
 
+/* ADULTS/KIDS */
+
+#akBG{
+    position: absolute;
+    z-index: -1;
+    width:100vw;
+    height: 100vh;
+    background-image: url(../images/ak_back_desk.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.akButtons {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 100px;
+    padding: 20px 0px;
+    background-color: #fafafa;
+    border: none;
+    border-radius: 10px;
+    color: #191919;
+}
+
+
+
+/* CHOOSE PROFILE */
+
+#profileBG{
+    position: absolute;
+    z-index: -1;
+    width:100vw;
+    height: 100vh;
+    background-image: url(../images/profile_back_desk.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.profileHeading {
+    text-align: center;
+    padding: 20px 0px 60px 0px;
+}
+
+.profileIcon {
+    width: 28vw;
+    height: auto;
+}
+
+#profiles a {
+    color: #fafafa;
+    text-align: center;
+}
+
+#profiles p {
+    font-size: 32px;
+    margin: 10px 0px 20px 0px;
+}
+
+/* CHOOSE PROFILE - TABLET */
+
+@media only screen and (min-width: 768px) {
+
+    .profileIcon {
+        width: 9vw;
+        height: auto;
+    }
+
+    #profiles h3 {
+        font-size: 24px;
+    }
+
+}
+
+/* CHOOSE PROFILE - DESKTOP */
+
+@media only screen and (min-width: 1328px) {
+
+    .profileIcon {
+        width: 11vw;
+        height: auto;
+    }
+
+    #profiles h3 {
+        font-size: 32px;
+    }
+
+}
+
+
+
+
 /* HEADER */
 
 .header {
