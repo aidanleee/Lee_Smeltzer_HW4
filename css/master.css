@@ -1,1 +1,402 @@
 .hide{display:none}.elipse-users{background-color:#000;height:50px;width:50px;text-align:center;border-radius:50%;line-height:48px;font-weight:bold;color:#fff}/*# sourceMappingURL=master.css.map */
+
+body {
+    background-color: #191919;
+    color: #fafafa;
+    font-size: 16px
+}
+
+/* SIGN IN */
+
+#signInBG {
+    position: absolute;
+    z-index: -1;
+    width:100vw;
+    height: 100vh;
+    background-image: url(../images/login_back_desk.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+/*
+#loginLogo {
+    height: 5vh;
+    width: auto;
+    margin: 8vh 0 2vh 0;
+    padding-left: 20px;
+}
+*/
+
+#loginLogo {
+    width: 76vw;
+    height: auto;
+    padding-top: 80px;
+    padding-bottom: 20px;
+}
+
+#signInBox {
+    height: 75vh;
+    background-color: rgba(0,0,0,0.75);
+    border-radius: 36px;
+}
+
+#signInInfo {
+    height: 65vh;
+    width: 100%;
+    margin-top: 8vh;
+}
+
+#signInInfo a {
+    color: #fafafa;
+}
+
+#signInInfo button {
+    background-color: #662d91;
+    border: none;
+}
+
+/* SIGN IN - TABLET */
+
+@media only screen and (min-width: 768px) {
+
+    #loginLogo {
+        width: 54vw;
+        padding-left: 8vw;
+    }
+
+}
+
+/* SIGN IN - DESKTOP */
+
+@media only screen and (min-width: 992px) {
+
+    #loginLogo {
+        width: 40vw;
+        padding-left: 8vw;
+    }
+
+}
+
+@media only screen and (min-width: 1400px) {
+
+    #signInInfo {
+        width: 60%;
+        margin-top: 10vh;
+        margin-left: 20%;
+    }
+
+}
+
+
+
+/* ADULTS/KIDS */
+
+#akBG{
+    position: absolute;
+    z-index: -1;
+    width:100vw;
+    height: 100vh;
+    background-image: url(../images/ak_back_desk.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.akButtons {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 100px;
+    padding: 20px 0px;
+    background-color: #fafafa;
+    border: none;
+    border-radius: 10px;
+    color: #191919;
+}
+
+
+
+/* CHOOSE PROFILE */
+
+#profileBG{
+    position: absolute;
+    z-index: -1;
+    width:100vw;
+    height: 100vh;
+    background-image: url(../images/profile_back_desk.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.profileHeading {
+    text-align: center;
+    padding: 20px 0px 60px 0px;
+}
+
+.profileIcon {
+    width: 28vw;
+    height: auto;
+}
+
+#profiles a {
+    color: #fafafa;
+    text-align: center;
+}
+
+#profiles p {
+    font-size: 32px;
+    margin: 10px 0px 20px 0px;
+}
+
+/* CHOOSE PROFILE - TABLET */
+
+@media only screen and (min-width: 768px) {
+
+    .profileIcon {
+        width: 9vw;
+        height: auto;
+    }
+
+    #profiles h3 {
+        font-size: 24px;
+    }
+
+}
+
+/* CHOOSE PROFILE - DESKTOP */
+
+@media only screen and (min-width: 1328px) {
+
+    .profileIcon {
+        width: 11vw;
+        height: auto;
+    }
+
+    #profiles h3 {
+        font-size: 32px;
+    }
+
+}
+
+
+
+
+/* HEADER */
+
+.header {
+    height: 100px;
+    background-color: #662d91;
+    padding-top: 30px;
+    
+}
+.headerNav input {
+    width: 10px;
+}
+
+#logo {
+    height: 40%;
+    width: auto;
+}
+
+.userIcon {
+    height: 44px;
+    width: auto;
+}
+
+/* HEADER - DESKTOP */
+
+@media only screen and (min-width: 681px) {
+    
+    .header {
+        padding-top: 30px;
+    }
+
+    #logo {
+        height: 60%;
+        width: auto;
+    }
+
+}
+
+
+
+/* MENU */
+
+.menu {
+    height: auto;
+    background-color: #242424;
+}
+
+.menu nav {
+    text-align: center;
+}
+
+.menu ul {
+    list-style: none;
+}
+
+.menu li {
+    display: inline-block;
+    border-bottom: none;
+    font-size: 24px;
+    padding: 18px 25px;
+}
+
+.menu a {
+    color: #fafafa;
+}
+
+/* MENU - DESKTOP */
+
+@media only screen and (min-width: 1024px) {
+
+    .menu nav {
+        padding-top: 40px;
+    }
+
+    .menu li {
+        display: block;
+    }
+
+}
+
+/* CONTENT */
+
+#content {
+    height: 1000px;
+    background-color: #191919;
+}
+
+.contentTitle {
+    padding-top: 15px;
+}
+
+.backbutton {
+    background-color: #242424;
+    width: 100%;
+    border: none;
+    color:#fafafa;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+}
+
+
+/* YOUR LIBRARY */
+
+.libraryThumb img {
+    width: 100%;
+    height: auto;
+    padding-top: 20px;
+}
+
+.libraryTitle {
+    background-color: #242424;
+    width: 100%
+}
+
+.libraryTitle p {
+    padding-left: 10px;
+    font-size: 24px;
+}
+
+.decadesMobile img {
+
+}
+
+.decadesDesktop img {
+    width: 100%;
+    height: auto;
+    padding-top: 20px;
+}
+
+
+
+/* 1980's */
+
+.moviePoster {
+    padding-top: 20px;
+    width: 100%;
+    height: auto;
+}
+
+
+/* MOVIE INFO */
+
+.movieInfo {
+    padding-top: 20px;
+}
+
+.movieInfo img {
+    width: 100%;
+    height: auto;
+}
+
+.infoTitle {
+    font-size: 24px;
+}
+
+.infoYear {
+    font-size: 16px;
+    padding-top: 2px;
+}
+
+.infoRuntime {
+    font-size: 16px;
+    padding-top: 2px;
+}
+
+.infoDesc {
+
+}
+
+.infoCast {
+    color: #949494;
+}
+
+.libraryButton {
+    padding: 2px 24px 2px 24px;
+    background-color: #242424;
+    border: none;
+    color:#fafafa;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* MOVIE INFO DESKTOP */
+
+@media only screen and (min-width: 1024px) {
+
+    .infoTitle {
+        font-size: 32px;
+    }
+    
+    .infoYear {
+        font-size: 24px;
+        padding-top: 8px;
+        text-align: right;
+    }
+    
+    .infoRuntime {
+        font-size: 24px;
+        padding-top: 8px;
+        text-align: left;
+    }
+    
+    .infoDesc {
+        font-size: 20px;
+    }
+    
+    .infoCast {
+        font-size: 20px;
+    }
+
+    .libraryButton {
+        font-size: 24px;
+    }
+
+}
