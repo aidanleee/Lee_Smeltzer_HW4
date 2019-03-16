@@ -37,7 +37,7 @@
                 <div class="col-1 col-md-2 col-lg-3"></div>
             </div>
         </div>`
-    }
+    };
 
     const AdultsKidsComponent = {
         template:
@@ -62,7 +62,7 @@
                 <div class="col-3 col-lg-3"></div>
             </div>
         </div>`
-    }
+    };
 
     const ChooseProfileComponent = {
         template:
@@ -113,7 +113,7 @@
                 <div class="col-2 col-md-3"></div>
             </div>
         </div>`
-    }
+    };
 
     const HeaderComponent = {
         template:
@@ -313,6 +313,110 @@
         </div>`
     };
 
+    const KidsHeaderComponent = {
+        template:
+        `<div class="row kidsHeader">
+            <div class="col-6 col-md-6 col-lg-4"><img src="images/roku_flashback.svg" id="logo"></div>
+            <div class="col-2 col-md-3 col-lg-6"><!--Filler--></div>
+            <div class="col-4 col-md-3 col-lg-2">
+                <img src="images/kidsicon.svg" class="kidsIcon">
+            </div>
+        </div>`
+    };
+
+    const KidsMenuComponent = {
+        template:
+        `<div class="row" id="kidsMenu">
+            <div class="col-3 col-md-2"></div>
+            <div class="col-6 col-md-8">
+                <div class="row">
+                    <a href="#"><div class="col-12 col-md-4 kidsMenuItem">
+                        <img src="images/kids_icon_movies.png" class="kidsMenuIcon">
+                        <h2>MOVIES</h2>
+                    </div></a>
+                    <a href="#"><div class="col-12 col-md-4 kidsMenuItem">
+                        <img src="images/kids_icon_tv.png" class="kidsMenuIcon">
+                        <h2>TV</h2>
+                    </div></a>
+                    <a href="#"><div class="col-12 col-md-4 kidsMenuItem">
+                        <img src="images/kids_icon_music.png" class="kidsMenuIcon">
+                        <h2>MUSIC</h2>
+                    </div></a>
+                </div>
+            </div>
+            <div class="col-3 col-md-2"></div>
+        </div>`
+    };
+
+    const KidsMoviesComponent = {
+        template:
+        `<div class="row" id="kidsMovies">
+            <div class="col-1 col-lg-3"></div>
+            <div class="col-10 col-lg-6">
+                <div class="row">
+                    <div class="col-2 kidsBackButton"><p>BACK</p></div>
+                    <div class="col-8 kidsTitle"><p>MOVIES</p></div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-6 col-lg-4">
+                        <a href="#">
+                            <img class="kidsMovieThumb" src="images/kids_thumb_soundofmusic.jpg">
+                        </a>
+                    </div>
+                    <div class="col-6 col-lg-4">
+                        <a href="#">
+                            <img class="kidsMovieThumb" src="images/kids_thumb_toystory.jpg">
+                        </a>
+                    </div>
+                    <div class="col-6 col-lg-4">
+                        <a href="#">
+                            <img class="kidsMovieThumb" src="images/kids_thumb_ET.jpg">
+                        </a>
+                    </div>
+                    <div class="col-6 col-lg-4">
+                        <a href="#">
+                            <img class="kidsMovieThumb" src="images/kids_thumb_thegoonies.jpg">
+                        </a>
+                    </div>
+                    <div class="col-6 col-lg-4">
+                        <a href="#">
+                            <img class="kidsMovieThumb" src="images/kids_thumb_willywonka.jpg">
+                        </a>
+                    </div>
+                    <div class="col-6 col-lg-4">
+                        <a href="#">
+                            <img class="kidsMovieThumb" src="images/kids_thumb_karatekid.jpg">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1 col-lg-3"></div>
+        </div>`
+    };
+
+    const KidsMovieInfo = {
+        template:
+        `<div class="row" id="kidsMovieInfo">
+			<div class="col-1 col-lg-2"></div>
+			<div class="col-10 col-lg-8">
+				<div class="row">
+					<div class="col-2 kidsBackButton"><p>Back</p></div>
+					<div class="col-8 kidsMovieTitle"><h2>The Sound of Music</h2></div>
+				</div>
+				
+				<div class="row">
+					<div class="col"><img src="images/soundofmusic.jpg" class="kidsMovieThumb"></div>
+				</div>
+
+				<div class="row">
+					<div class="col"><p class="kidsMovieDesc">A woman leaves an Austrian convent to become a governess to the children of a Naval officer widower.</p></div>
+				</div>
+			</div>
+			<div class="col-1 col-lg-2"></div>
+		</div>`
+    };
+
     const routes = [
         { path: '/', name: 'home', component: HomePageComponent },
         { path: '/users', name: 'users', component: UsersPageComponent }
@@ -346,11 +450,15 @@
         components: {
             'LoginComponent': LoginComponent,
             'AdultsKidsComponent': AdultsKidsComponent,
-            'ChooseProfileComponent' : ChooseProfileComponent,
+            'ChooseProfileComponent': ChooseProfileComponent,
             'HeaderComponent': HeaderComponent,
             'DecadeComponent': DecadeComponent,
             'MoviesComponent': MoviesComponent,
-            'MovieInfoComponent': MovieInfoComponent,            
+            'MovieInfoComponent': MovieInfoComponent,
+            'KidsHeaderComponent': KidsHeaderComponent,
+            'KidsMenuComponent': KidsMenuComponent,
+            'KidsMoviesComponent': KidsMoviesComponent,
+            'KidsMovieInfo': KidsMovieInfo,
         },
 
         router: router

@@ -400,3 +400,165 @@ body {
     }
 
 }
+
+
+/* KIDS SECTION */
+
+/* KIDS HEADER */
+
+.kidsHeader {
+    height: 100px;
+    background-color: #662d91;
+    padding-top: 30px;
+    
+}
+
+#kidsLogo {
+    height: 40%;
+    width: auto;
+}
+
+.kidsIcon {
+    height: 44px;
+    width: auto;
+}
+
+/* HEADER - DESKTOP */
+
+@media only screen and (min-width: 681px) {
+    
+    .kidsHeader {
+        padding-top: 30px;
+    }
+
+    #kidsLogo {
+        height: 60%;
+        width: auto;
+    }
+
+}
+
+
+/* KIDS MENU */
+
+#kidsMenu {
+    padding-top: 40px;
+}
+
+.kidsMenuItem {
+    text-align: center;
+    color: #fafafa;
+}
+
+.kidsMenuIcon {
+    width: 40vw;
+    height: auto;
+}
+
+.kidsMenuItem h2 {
+    padding-top: 10px;
+}
+
+/* KIDS MENU - TABLET */
+
+@media only screen and (min-width: 768px) {
+
+    #kidsMenu {
+        padding-top: 120px;
+    }
+
+    .kidsMenuIcon {
+        width: 18vw;
+        height: auto;
+    }
+
+}
+
+
+/* KIDS MOVIES */
+
+#kidsMovies {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.kidsBackButton {
+    background-color: #662d91;
+    border-radius: 15px;
+    color: #fafafa;
+    margin-right: 2vw;
+    font-size: 16px;
+    padding-top: 16px;
+}
+
+.kidsTitle {
+    background-color: #fafafa;
+    border-radius: 15px;
+    color: #191919;
+}
+
+#kidsMovies p {
+    font-size: 16px;
+    padding-top: 16px;
+}
+
+.kidsMovieThumb{
+    width: 100%;
+    height: auto;
+    padding-top: 20px;
+}
+
+/* KIDS MOVIES - TABLET */
+
+@media only screen and (min-width: 640px) {
+
+    #kidsMovies p {
+        font-size: 24px;
+        padding-top: 12px;
+    }
+
+    .kidsBackButton {
+        font-size: 24px;
+        padding-top: 12px;
+    }
+
+}
+
+
+/* KIDS MOVIE INFO */
+
+#kidsMovieInfo {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.kidsMovieTitle {
+    color: #fafafa;
+}
+
+#kidsMovieTitle {
+    font-size: 20px;
+}
+
+.kidsMovieThumb{
+    width: 100%;
+    height: auto;
+    padding-top: 20px;
+}
+
+.kidsMovieDesc {
+    text-align: left;
+    font-size: 24px;
+    padding-top: 30px;
+}
+
+/* KIDS MOVIE INFO - TABLET */
+
+@media only screen and (min-width: 640px) {
+
+    #kidsMovieTitles p {
+        font-size: 40px;
+        padding-top: 12px;
+    }
+
+}
