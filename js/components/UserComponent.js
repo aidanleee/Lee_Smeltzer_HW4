@@ -2,16 +2,15 @@ export default {
     props: ['liveuser'],
 
     template: `
-    <div class="mx-auto">
-        <div @click="navToUserHome()">
-            <div class="text-center">
-                <div class="elipse-users">
+		<div @click="navToUserProfile()" class="user-cont text-center col-6 col-md-3">
+            <div class="profileIcon">
+                <div class="user-icon">
                     <span>{{ liveuser.finitial }}</span>
                 </div>
                 <p>{{ liveuser.fname }}</p>
             </div>
         </div>
-    </div>`,
+	`,
 
     created: function() {
         if (this.liveuser.avatar == null) {
@@ -20,8 +19,8 @@ export default {
     },
 
     methods: {
-        navToUserHome() {            
-            this.$router.push({ name: "home", params: { currentuser: this.liveuser } });
+        navToUserProfile() {            
+            this.$router.push({ name: "adultskids", params: { currentuser: this.liveuser } });
             // set a localstorage session object so that we don't have to log back in on page refresh or after our initial login
             localStorage.setItem("cachedUser", JSON.stringify(this.liveuser)); 
         }
