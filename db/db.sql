@@ -2,16 +2,24 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Mar 16, 2019 at 04:25 AM
+-- Host: 127.0.0.1:3306
+-- Generation Time: Mar 17, 2019 at 03:34 AM
 -- Server version: 5.7.23
--- PHP Version: 7.2.8
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
--- Database: `movie_review`
+-- Database: `db`
 --
 
 -- --------------------------------------------------------
@@ -20,11 +28,13 @@ SET time_zone = "+00:00";
 -- Table structure for table `tbl_arating`
 --
 
-CREATE TABLE `tbl_arating` (
-  `arating_id` smallint(5) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `tbl_arating`;
+CREATE TABLE IF NOT EXISTS `tbl_arating` (
+  `arating_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
   `arating_name` varchar(125) NOT NULL,
-  `arating_desc` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+  `arating_desc` text NOT NULL,
+  PRIMARY KEY (`arating_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `tbl_arating`
@@ -43,15 +53,17 @@ INSERT INTO `tbl_arating` (`arating_id`, `arating_name`, `arating_desc`) VALUES
 -- Table structure for table `tbl_audio`
 --
 
-CREATE TABLE `tbl_audio` (
-  `audio_id` mediumint(9) NOT NULL,
+DROP TABLE IF EXISTS `tbl_audio`;
+CREATE TABLE IF NOT EXISTS `tbl_audio` (
+  `audio_id` mediumint(9) NOT NULL AUTO_INCREMENT,
   `audio_title` varchar(125) DEFAULT NULL,
   `audio_year` varchar(5) DEFAULT NULL,
   `audio_storyline` text,
   `audio_artist` varchar(75) DEFAULT NULL,
   `audio_cover` varchar(75) DEFAULT 'temp_cover.jpg',
-  `audio_src` varchar(40) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `audio_src` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`audio_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_audio`
@@ -78,10 +90,13 @@ INSERT INTO `tbl_audio` (`audio_id`, `audio_title`, `audio_year`, `audio_storyli
 -- Table structure for table `tbl_cast`
 --
 
-CREATE TABLE `tbl_cast` (
-  `cast_id` mediumint(8) UNSIGNED NOT NULL,
-  `cast_name` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `tbl_cast`;
+CREATE TABLE IF NOT EXISTS `tbl_cast` (
+  `cast_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `cast_name` varchar(250) NOT NULL,
+  PRIMARY KEY (`cast_id`),
+  UNIQUE KEY `cast_name` (`cast_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_cast`
@@ -144,11 +159,13 @@ INSERT INTO `tbl_cast` (`cast_id`, `cast_name`) VALUES
 -- Table structure for table `tbl_comments`
 --
 
-CREATE TABLE `tbl_comments` (
-  `comments_id` mediumint(8) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `tbl_comments`;
+CREATE TABLE IF NOT EXISTS `tbl_comments` (
+  `comments_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT,
   `comments_auth` varchar(125) NOT NULL,
   `comments_copy` text NOT NULL,
-  `comments_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `comments_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`comments_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -157,10 +174,12 @@ CREATE TABLE `tbl_comments` (
 -- Table structure for table `tbl_country`
 --
 
-CREATE TABLE `tbl_country` (
-  `country_id` smallint(3) NOT NULL,
-  `country_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+DROP TABLE IF EXISTS `tbl_country`;
+CREATE TABLE IF NOT EXISTS `tbl_country` (
+  `country_id` smallint(3) NOT NULL AUTO_INCREMENT,
+  `country_name` varchar(100) NOT NULL,
+  PRIMARY KEY (`country_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=195 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `tbl_country`
@@ -368,10 +387,12 @@ INSERT INTO `tbl_country` (`country_id`, `country_name`) VALUES
 -- Table structure for table `tbl_director`
 --
 
-CREATE TABLE `tbl_director` (
-  `director_id` smallint(5) UNSIGNED NOT NULL,
-  `director_name` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `tbl_director`;
+CREATE TABLE IF NOT EXISTS `tbl_director` (
+  `director_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `director_name` varchar(250) NOT NULL,
+  PRIMARY KEY (`director_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_director`
@@ -406,10 +427,12 @@ INSERT INTO `tbl_director` (`director_id`, `director_name`) VALUES
 -- Table structure for table `tbl_genre`
 --
 
-CREATE TABLE `tbl_genre` (
-  `genre_id` tinyint(3) UNSIGNED NOT NULL,
-  `genre_name` varchar(125) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `tbl_genre`;
+CREATE TABLE IF NOT EXISTS `tbl_genre` (
+  `genre_id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `genre_name` varchar(125) NOT NULL,
+  PRIMARY KEY (`genre_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_genre`
@@ -439,10 +462,12 @@ INSERT INTO `tbl_genre` (`genre_id`, `genre_name`) VALUES
 -- Table structure for table `tbl_language`
 --
 
-CREATE TABLE `tbl_language` (
-  `lang_id` smallint(5) UNSIGNED NOT NULL,
-  `lang_name` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `tbl_language`;
+CREATE TABLE IF NOT EXISTS `tbl_language` (
+  `lang_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `lang_name` varchar(250) NOT NULL,
+  PRIMARY KEY (`lang_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=216 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_language`
@@ -671,43 +696,86 @@ INSERT INTO `tbl_language` (`lang_id`, `lang_name`) VALUES
 -- Table structure for table `tbl_movies`
 --
 
-CREATE TABLE `tbl_movies` (
-  `movies_id` mediumint(8) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `tbl_movies`;
+CREATE TABLE IF NOT EXISTS `tbl_movies` (
+  `movies_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT,
   `movies_cover` varchar(75) NOT NULL DEFAULT 'cover_default.jpg',
   `movies_title` varchar(125) NOT NULL,
   `movies_year` varchar(5) NOT NULL,
   `movies_runtime` varchar(25) NOT NULL,
   `movies_storyline` text NOT NULL,
-  `movies_trailer` varchar(75) NOT NULL DEFAULT 'trailer_default.jpg',
-  `movies_release` varchar(125) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `movies_cast` text NOT NULL,
+  `movies_kids` tinyint(4) NOT NULL,
+  `movies_kids_thumb` varchar(75) NOT NULL,
+  PRIMARY KEY (`movies_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_movies`
 --
 
-INSERT INTO `tbl_movies` (`movies_id`, `movies_cover`, `movies_title`, `movies_year`, `movies_runtime`, `movies_storyline`, `movies_trailer`, `movies_release`) VALUES
-(1, 'guardians2.jpg', 'Guardians of the Galaxy Vol. 2', '2017', '2h 16m', 'The Guardians must fight to keep their newfound family together as they unravel the mystery of Peter Quill&rsquo;s true parentage.', 'Guardians2.mp4', 'May 5, 2017'),
-(2, 'dunkirk.jpg', 'Dunkirk', '2017', '1h 46m', 'Allied soldiers from Belgium, the British Empire and France are surrounded by the German army and evacuated during a fierce battle in World War II.', 'Dunkirk.mp4', 'July 21, 2017'),
-(3, 'logan.jpg', 'Logan', '2017', '2h 17m', 'In the near future, a weary Logan cares for an ailing Professor X, somewhere on the Mexican border. However, Logan&rsquo;s attempts to hide from the world, and his legacy, are upended when a young mutant arrives, pursued by dark forces.', 'Logan.mp4', 'March 3,2017'),
-(4, 'okja.jpg', 'Okja', '2017', '2h', ' Meet Mija, a young girl who risks everything to prevent a powerful, multi-national company from kidnapping her best friend - a fascinating animal named Okja. ', 'Okja.mp4', 'June 28,2017'),
-(5, 'beauty.jpg', 'Beauty and the Beast', '2017', '2h 9min', 'An adaptation of the fairy tale about a monstrous-looking prince and a young woman who fall in love. ', 'Beauty.mp4', 'March 17, 2017'),
-(6, 'hacksaw.jpg', 'Hacksaw Ridge', '2016', '2h 19m', 'WWII American Army Medic Desmond T. Doss, who served during the Battle of Okinawa, refuses to kill people, and becomes the first man in American history to receive the Medal of Honor without firing a shot.', 'Hacksaw.mp4', 'November 4, 2016'),
-(7, 'deadpool.jpg', 'Deadpool', '2016', '1h 48m', 'A fast-talking mercenary with a morbid sense of humor is subjected to a rogue experiment that leaves him with accelerated healing powers and a quest for revenge.', 'Bloodpool.mp4', 'Febuary 12, 2016'),
-(8, 'arrival.jpg', 'Arrival', '2016', '1h 56m', 'When twelve mysterious spacecraft appear around the world, linguistics professor Louise Banks is tasked with interpreting the language of the apparent alien visitors.', 'Arrival.mp4', 'November 11, 2016'),
-(9, 'eddie.jpg', 'Eddie the Eagle', '2016', '1h 46m', 'The story of Eddie Edwards, the notoriously tenacious British underdog ski jumper who charmed the world at the 1988 Winter Olympics.', 'Eddie.mp4', 'Febuary 26, 2016'),
-(10, 'trolls.jpg', 'Trolls', '2016', '1h 32m', 'After the Bergens invade Troll Village, Poppy, the happiest Troll ever born, and the curmudgeonly Branch set off on a journey to rescue her friends.', 'Trolls.mp4', 'November 4, 2016'),
-(11, 'revenant.jpg', 'The Revenant', '2015', '2h 36m', 'A frontiersman on a fur trading expedition in the 1820s fights for survival after being mauled by a bear and left for dead by members of his own hunting team.', 'Revenant.mp4', 'January 8, 2015'),
-(12, 'brooklyn.jpg', 'Brooklyn', '2015', '1h 57m', 'An Irish immigrant lands in 1950s Brooklyn, where she quickly falls into a romance with a local. When her past catches up with her, however, she must choose between two countries and the lives that exist within.', 'Brooklyn.mp4', 'November 25, 2015'),
-(13, 'walk.jpg', 'The Walk', '2015', '2h 3m', 'In 1974, high-wire artist Philippe Petit recruits a team of people to help him realize his dream: to walk the immense void between the World Trade Center towers.', 'Walk.mp4', 'October 9, 2015'),
-(14, 'colonia.jpg', 'Colonia', '2015', '1h 46m', 'A young woman&rsquo;s desperate search for her abducted boyfriend that draws her into the infamous Colonia Dignidad, a sect nobody has ever escaped from.', 'Colonia.mp4', 'April 15, 2015'),
-(15, 'force.jpg', 'Star Wars: The Force Awakens', '2015', '2h 16m', 'Three decades after the Empire&rsquo;s defeat, a new threat arises in the militant First Order. Stormtrooper defector Finn and spare parts scavenger Rey are caught up in the Resistance&rsquo;s search for the missing Luke Skywalker.', 'Force.mp4', 'December 18, 2015'),
-(16, 'whiplash.jpg', 'Whiplash', '2014', '1h 47m', 'A promising young drummer enrolls at a cut-throat music conservatory where his dreams of greatness are mentored by an instructor who will stop at nothing to realize a student\'s potential.', 'Whiplash.mp4', 'October 15, 2014'),
-(17, 'guardians.jpg', 'Guardians of the Galaxy', '2014', '2h 1m', 'A group of intergalactic criminals are forced to work together to stop a fanatical warrior from taking control of the universe.', 'Guardians.mp4', 'August 1, 2014'),
-(18, 'donjon.jpg', 'Don Jon', '2013', '1h 30m', 'A New Jersey guy dedicated to his family, friends, and church, develops unrealistic expectations from watching porn and works to find happiness and intimacy with his potential true love.', 'donjon.mp4', 'September 27, 2013'),
-(19, 'gravity.jpg', 'Gravity', '2013', '1h 31m', 'Two astronauts work together to survive after an accident which leaves them alone in space.', 'Gravity.mp4', 'October 4, 2013'),
-(20, 'pi.jpg', 'Life of Pi', '2012', '2h 7m', 'A young man who survives a disaster at sea is hurtled into an epic journey of adventure and discovery. While cast away, he forms an unexpected connection with another survivor: a fearsome Bengal tiger.', 'Pi.jpg', 'November 21, 2012'),
-(21, 'silver.jpg', 'Silver Linings Playbook', '2012', '2h 2m', 'After a stint in a mental institution, former teacher Pat Solitano moves back in with his parents and tries to reconcile with his ex-wife. Things get more challenging when Pat meets Tiffany, a mysterious girl with problems of her own.', 'Silver.jpg', 'December 25, 2012');
+INSERT INTO `tbl_movies` (`movies_id`, `movies_cover`, `movies_title`, `movies_year`, `movies_runtime`, `movies_storyline`, `movies_cast`, `movies_kids`, `movies_kids_thumb`) VALUES
+(34, 'backtothefuture.jpg', 'Back to the Future', '1985', '1h 56min', 'Marty McFly, a 17-year-old high school student, is accidentally sent thirty years into the past in a time-traveling DeLorean invented by his close friend, the maverick scientist Doc Brown.', 'Michael J. Fox, Christopher Lloyd, Lea Thompson', 1, 'backtothefuture_thumb.jpg'),
+(35, 'thebreakfastclub.jpg', 'The Breakfast Club', '1985', '1h 37m', 'Five high school students meet in Saturday detention and discover how they have a lot more in common than they thought.', 'Emilio Estevez, Judd Nelson, Molly Ringwald', 0, ''),
+(36, 'empirestrikesback.jpg', 'The Empire Strikes Back', '1980', '2h 4min', 'After the rebels are brutally overpowered by the Empire on the ice planet Hoth, Luke Skywalker begins Jedi training with Yoda, while his friends are pursued by Darth Vader.', 'Mark Hamill, Harrison Ford, Carrie Fisher ', 1, 'empirestrikesback_thumb.jpg'),
+(37, 'bladerunner.jpg', 'Blade Runner', '1982', '1h 57min', 'A blade runner must pursue and terminate four replicants who stole a ship in space, and have returned to Earth to find their creator.', 'Harrison Ford, Rutger Hauer, Sean Young', 0, ''),
+(38, 'footloose.jpg', 'Footloose', '1984', '1h 47min', 'A city teenager moves to a small town where rock music and dancing have been banned, and his rebellious spirit shakes up the populace.', 'Kevin Bacon, Lori Singer, John Lithgow ', 1, 'footloose_thumb.jpg'),
+(39, 'ET.jpg', 'E.T. the Extra-Terrestria', '1982', '1h 55min', 'A troubled child summons the courage to help a friendly alien escape Earth and return to his home world.', 'Henry Thomas, Drew Barrymore, Peter Coyote', 1, 'ET_thumb.jpg'),
+(40, 'raiders.jpg', 'Raiders of the Lost Ark', '1981', '1h 55min', 'In 1936, archaeologist and adventurer Indiana Jones is hired by the U.S. government to find the Ark of the Covenant before Adolf Hitler\'s Nazis can obtain its awesome powers.', 'Harrison Ford, Karen Allen, Paul Freeman', 1, 'raiders_thumb.jpg'),
+(41, 'airplane.jpg', 'Airplane!', '1980', '1h 28min', 'A man afraid to fly must ensure that a plane lands safely after the pilots become sick.', 'Robert Hays, Julie Hagerty, Leslie Nielsen', 0, ''),
+(42, 'poltergeist.jpg', 'Poltergeist ', '1982', '1h 54min', 'A family\'s home is haunted by a host of demonic ghosts.', 'JoBeth Williams, Heather O\'Rourke, Craig T. Nelson', 0, ''),
+(43, 'thegoonies.jpg', 'The Goonies', '1985', '1h 54min', 'In order to save their home from foreclosure, a group of misfits set out to find a pirate\'s ancient valuable treasure.', 'Sean Astin, Josh Brolin, Jeff Cohen', 1, 'goonies_thumb.jpg'),
+(44, 'riskybusiness.jpg', 'Risky Business', '1983', '1h 39min', 'A Chicago teenager is looking for fun at home while his parents are away, but the situation quickly gets out of hand.', 'Tom Cruise, Rebecca De Mornay, Joe Pantoliano', 0, ''),
+(45, 'theshining.jpg', 'The Shining', '1980', '2h 26min', 'A family heads to an isolated hotel for the winter where an evil spiritual presence influences the father into violence, while his psychic son sees horrific forebodings from both past and future.', 'Jack Nicholson, Shelley Duvall, Danny Lloyd ', 0, ''),
+(46, 'thegodfather.jpg', 'The Godfather', '1972', '2h 55min', 'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.', 'Marlon Brando, Al Pacino, James Caan', 0, ''),
+(47, 'barrylyndon.jpg', 'Barry Lyndon', '1975', '3h 5min', 'An Irish rogue wins the heart of a rich widow and assumes her dead husband\'s aristocratic position in 18th-century England.', 'An Irish rogue wins the heart of a rich widow and assumes her dead husband\'s aristocratic position in 18th-century England.', 0, ''),
+(48, 'oneflewoverthecuckoosnest.jpg', 'One Flew Over the Cuckoo\'s Nest', '1975', '2h 13min', 'A criminal pleads insanity after getting into trouble again and once in the mental institution rebels against the oppressive nurse and rallies up the scared patients.', 'Jack Nicholson, Louise Fletcher, Will Sampson', 0, ''),
+(49, 'chinatown.jpg', 'Chinatown ', '1974', '2h 10min', 'A private detective hired to expose an adulterer finds himself caught up in a web of deceit, corruption, and murder.', 'Jack Nicholson, Faye Dunaway, John Huston', 0, ''),
+(50, 'papermoon.jpg', 'Paper Moon', '1973', '1h 42min', 'During the Great Depression, a con man finds himself saddled with a young girl who may or may not be his daughter, and the two forge an unlikely partnership.', 'Ryan O\'Neal, Tatum O\'Neal, Madeline Kahn', 0, ''),
+(51, 'thesting.jpg', 'The Sting', '1973', '2h 9min', 'Two grifters team up to pull off the ultimate con.', 'Paul Newman, Robert Redford, Robert Shaw', 0, ''),
+(52, 'deliverance.jpg', 'Deliverance ', '1972', '1h 49min', 'Intent on seeing the Cahulawassee River before it\'s dammed and turned into a lake, outdoor fanatic Lewis Medlock takes his friends on a canoeing trip they\'ll never forget into the dangerous American back-country.', 'Jon Voight, Burt Reynolds, Ned Beatty', 0, ''),
+(53, 'anewhope.jpg', 'A New Hope', '1977', '2h 1min', 'Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire\'s world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth Vader.', 'Mark Hamill, Harrison Ford, Carrie Fisher', 1, 'anewhope.thumb'),
+(54, 'rocky.jpg', 'Rocky', '1976', '2h', 'A small-time boxer gets a supremely rare chance to fight a heavy-weight champion in a bout in which he strives to go the distance for his self-respect.', 'Sylvester Stallone, Talia Shire, Burt Young', 0, ''),
+(55, 'jaws.jpg', 'Jaws', '1975', '2h 4min', 'When a killer shark unleashes chaos on a beach resort, it\'s up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down.', 'Roy Scheider, Robert Shaw, Richard Dreyfuss', 0, ''),
+(56, 'taxidriver.jpg', 'Taxi Driver', '1976', '1h 54', 'A mentally unstable veteran works as a nighttime taxi driver in New York City, where the perceived decadence and sleaze fuels his urge for violent action by attempting to liberate a presidential campaign worker and an underage prostitute.', 'Robert De Niro, Jodie Foster, Cybill Shepherd', 0, ''),
+(57, 'montypython.jpg', 'Monty Python and the Holy Grail', '1975', '1h 31min', 'King Arthur and his Knights of the Round Table embark on a surreal, low-budget search for the Holy Grail, encountering many, very silly obstacles.', 'Graham Chapman, John Cleese, Eric Idle', 1, 'holygrail_thumb.jpg'),
+(58, 'psycho.jpg', 'Psycho', '1960', '1h 49min', 'A Phoenix secretary embezzles forty thousand dollars from her employer\'s client, goes on the run, and checks into a remote motel run by a young man under the domination of his mother.', 'Anthony Perkins, Janet Leigh, Vera Miles', 0, ''),
+(59, 'tokillamockingbird.jpg', 'To Kill a Mockingbird', '1962', '2h 9min', 'Atticus Finch, a lawyer in the Depression-era South, defends a black man against an undeserved rape charge, and his children against prejudice.', 'Gregory Peck, John Megna, Frank Overton', 0, ''),
+(60, 'midnightcowboy.jpg', 'Midnight Cowboy', '1969', '1h 53min', 'A naive hustler travels from Texas to New York City to seek personal fortune, finding a new friend in the process.', 'Dustin Hoffman, Jon Voight, Sylvia Miles', 0, ''),
+(61, 'goodbadugly.jpg', 'The Good, the Bad and the Ugly', '1966', '2h 58min', 'A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery.', 'Clint Eastwood, Eli Wallach, Lee Van Cleef', 0, ''),
+(62, 'thewildbunch.jpg', 'The Wild Bunch', '1969', '2h 15min', 'An aging group of outlaws look for one last big score as the \"traditional\" American West is disappearing around them.', 'William Holden, Ernest Borgnine, Robert Ryan', 0, ''),
+(63, 'theapartment.jpg', 'The Apartment', '1960', '2h 5min', 'A man tries to rise in his company by letting its executives use his apartment for trysts, but complications and a romance of his own ensue.', 'Jack Lemmon, Shirley MacLaine, Fred MacMurray', 0, ''),
+(64, 'westsidestory.jpg', 'West Side Story', '1961', '2h 33min', 'Two youngsters from rival New York City gangs fall in love, but tensions between their respective friends build toward tragedy.', 'Natalie Wood, George Chakiris, Richard Beymer', 0, ''),
+(65, 'coolhandluke.jpg', 'Cool Hand Luke', '1967', '2h 6min', 'A laid back Southern man is sentenced to two years in a rural prison, but refuses to conform.', 'Paul Newman, George Kennedy, Strother Martin ', 0, ''),
+(66, 'doctorzhivago.jpg', 'Doctor Zhivago', '1965', '3h 17min', 'The life of a Russian physician and poet who, although married to another, falls in love with a political activist\'s wife and experiences hardship during World War I and then the October Revolution.', 'Omar Sharif, Julie Christie, Geraldine Chaplin', 0, ''),
+(67, 'aharddaysnight.jpg', 'A Hard Day\'s Night', '1964', '1h 27min', 'Over two \"typical\" days in the life of The Beatles, the boys struggle to keep themselves and Paul McCartney\'s mischievous grandfather in check while preparing for a live television performance.', 'John Lennon, Paul McCartney, George Harrison', 1, 'aharddaysnight_thumb.jpg'),
+(68, 'alphaville.jpg', 'Alphaville', '1965', '1h 39min', 'A U.S. secret agent is sent to the distant space city of Alphaville where he must find a missing person and free the city from its tyrannical ruler.', 'Eddie Constantine, Anna Karina, Akim Tamiroff ', 0, ''),
+(69, 'thesoundofmusic.jpg', 'The Sound of Music', '1965', '2h 52min', 'A woman leaves an Austrian convent to become a governess to the children of a Naval officer widower.', 'Julie Andrews, Christopher Plummer, Eleanor Parker', 1, 'thesoundofmusic_thumb.jpg'),
+(79, 'rearwindow.jpg', 'Rear Window', '1954', '1h 52min', 'A wheelchair-bound photographer spies on his neighbors from his apartment window and becomes convinced one of them has committed murder.', 'James Stewart, Grace Kelly, Wendell Corey', 0, ''),
+(80, '12angrymen.jpg', '12 Angry Men', '1957', '1h 36min', 'A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence.', 'Henry Fonda, Lee J. Cobb, Martin Balsam', 0, ''),
+(81, 'northbynorthwest.jpg', 'North by Northwest', '1959', '2h 16min', 'A New York City advertising executive goes on the run after being mistaken for a government agent by a group of foreign spies.', 'A New York City advertising executive goes on the run after being mistaken for a government agent by a group of foreign spies.', 0, ''),
+(82, 'pathsofglory.jpg', 'Paths of Glory', '1957', '1h 28min', 'After refusing to attack an enemy position, a general accuses the soldiers of cowardice and their commanding officer must defend them', 'Kirk Douglas, Ralph Meeker, Adolphe Menjou ', 0, ''),
+(83, 'anatomyofamurder.jpg', 'Anatomy of a Murder', '1959', '2h 40min', 'In a murder trial, the defendant says he suffered temporary insanity after the victim raped his wife. What is the truth, and will he win his case?', 'James Stewart, Lee Remick, Ben Gazzara', 0, ''),
+(84, 'strangersonatrain.jpg', 'Strangers on a Train', '1951', '1h 41min', 'A psychotic socialite attempts to force an amateur tennis star to comply with his theory that two complete strangers can get away with reciprocal murders.', 'Farley Granger, Robert Walker, Ruth Roman ', 0, ''),
+(85, 'ourmaninhavana.jpg', 'Our Man in Havana', '1959', '1h 51min', 'Jim Wormold, who is a vacuum cleaner salesman, participates as an Agent in the British Secret Service. But he soon realizes that his plans by lying are going to get him into trouble.', 'Alec Guinness, Maureen O\'Hara, Burl Ives ', 0, ''),
+(86, 'kansascityconfidential.jpg', 'Kansas City Confidential', '1952', '1h 39min', 'An ex-con trying to go straight is framed for a million dollar armored car robbery and must go to Mexico in order to unmask the real culprits.', 'John Payne, Coleen Gray, Preston Foster', 0, ''),
+(87, 'thekilling.jpg', 'The Killing', '1956', '1h 24min', 'Crook Johnny Clay assembles a five man team to plan and execute a daring race-track robbery.', 'Sterling Hayden, Coleen Gray, Vince Edwards', 0, ''),
+(88, 'thedaytheearthstoodstill.jpg', 'The Day the Earth Stood Still', '1951', '1h 32min', 'An alien lands and tells the people of Earth that they must live peacefully or be destroyed as a danger to other planets.', 'Michael Rennie, Patricia Neal, Hugh Marlowe ', 1, 'thedaytheearthstoodstill_thumb.jpg'),
+(89, 'thewrongman.jpg', 'The Wrong Man', '1956', '1h 45min', 'In 1953, an innocent man named Christopher Emmanuel \"Manny\" Balestrero is arrested after being mistaken for an armed robber.', 'Henry Fonda, Vera Miles, Anthony Quayle', 0, ''),
+(90, 'themaninthewhitesuit.jpg', 'The Man in the White Suit', '1951', '1h 25min', 'An altruistic chemist invents a fabric which resists wear and stain as a boon to humanity, but big business and labor realize it must be suppressed for economic reasons.', 'Alec Guinness, Joan Greenwood, Cecil Parker', 0, ''),
+(91, 'terminator2.jpg', 'Terminator 2: Judgment Day', '1991', '2h 17min', 'A cyborg, identical to the one who failed to kill Sarah Connor, must now protect her teenage son, John Connor, from a more advanced and powerful cyborg.', 'Arnold Schwarzenegger, Linda Hamilton, Edward Furlong', 0, ''),
+(92, 'resevoirdogs.jpg', 'Reservoir Dogs', '1992', '1h 39min', 'When a simple jewelry heist goes horribly wrong, the surviving criminals begin to suspect that one of them is a police informant.', 'Harvey Keitel, Tim Roth, Michael Madsen', 0, ''),
+(93, 'pulpfiction.jpg', 'Pulp Fiction', '1994', '2h 34min', 'The lives of two mob hitmen, a boxer, a gangster\'s wife, and a pair of diner bandits intertwine in four tales of violence and redemption.', 'John Travolta, Uma Thurman, Samuel L. Jackson', 0, ''),
+(94, 'Fargo.jpg', 'Fargo', '1996', '1h 38min', 'Jerry Lundegaard\'s inept crime falls apart due to his and his henchmen\'s bungling and the persistent police work of the quite pregnant Marge Gunderson.', 'William H. Macy, Frances McDormand, Steve Buscemi', 0, ''),
+(95, 'totalrecall.jpg', 'Total Recal', '1992', '1h 53min', 'When a man goes for virtual vacation memories of the planet Mars, an unexpected and harrowing series of events forces him to go to the planet for real - or does he?', 'When a man goes for virtual vacation memories of the planet Mars, an unexpected and harrowing series of events forces him to go to the planet for real - or does he?', 0, ''),
+(96, 'thebiglebowski.jpg', 'The Big Lebowski', '1998', '1h 57min', 'Jeff \"The Dude\" Lebowski, mistaken for a millionaire of the same name, seeks restitution for his ruined rug and enlists his bowling buddies to help get it.', 'Jeff Bridges, John Goodman, Julianne Moore', 0, ''),
+(97, 'twelvemonkeys.jpg', 'Twelve Monkeys', '1995', '2h 9min', 'In a future world devastated by disease, a convict is sent back in time to gather information about the man-made virus that wiped out most of the human population on the planet.', 'Bruce Willis, Madeleine Stowe, Brad Pitt ', 0, ''),
+(98, 'fromdusktilldawn.jpg', 'From Dusk Till Dawn', '1996', '1h 48min', 'Two criminals and their hostages unknowingly seek temporary refuge in a truck stop populated by vampires, with chaotic results.', 'Harvey Keitel, George Clooney, Juliette Lewis ', 0, ''),
+(99, 'losthighway.jpg', 'Lost Highway', '1997', '2h 14min', 'After a bizarre encounter at a party, a jazz saxophonist is framed for the murder of his wife and sent to prison, where he inexplicably morphs into a young mechanic and begins leading a new life.', 'Bill Pullman, Patricia Arquette, John Roselius', 0, ''),
+(100, 'se7en.jpg', 'Se7en', '1995', '2h 7min', 'Two detectives, a rookie and a veteran, hunt a serial killer who uses the seven deadly sins as his motives.', 'Morgan Freeman, Brad Pitt, Kevin Spacey', 0, ''),
+(101, 'nameofthefather.jpg', 'In the Name of the Father', '1993', '2h 13min', 'A man\'s coerced confession to an IRA bombing he did not commit results in the imprisonment of his father as well. An English lawyer fights to free them.', 'Daniel Day-Lewis, Pete Postlethwaite, Alison Crosbie', 0, ''),
+(102, 'fightclub.jpg', 'Fight Club', '1990', '2h 19min', 'An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.', 'Brad Pitt, Edward Norton, Meat Loaf ', 0, ''),
+(103, 'apollo13.jpg', 'Apollo 13', '1995', '2h 20min', 'NASA must devise a strategy to return Apollo 13 to Earth safely after the spacecraft undergoes massive internal damage putting the lives of the three astronauts on board in jeopardy.', 'Tom Hanks, Bill Paxton, Kevin Bacon', 1, 'apollo13_thumb.jpg');
 
 -- --------------------------------------------------------
 
@@ -715,11 +783,13 @@ INSERT INTO `tbl_movies` (`movies_id`, `movies_cover`, `movies_title`, `movies_y
 -- Table structure for table `tbl_mov_cast`
 --
 
-CREATE TABLE `tbl_mov_cast` (
-  `mov_cast_id` mediumint(8) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `tbl_mov_cast`;
+CREATE TABLE IF NOT EXISTS `tbl_mov_cast` (
+  `mov_cast_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT,
   `movies_id` mediumint(9) NOT NULL,
-  `cast_id` mediumint(9) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `cast_id` mediumint(9) NOT NULL,
+  PRIMARY KEY (`mov_cast_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_mov_cast`
@@ -786,11 +856,13 @@ INSERT INTO `tbl_mov_cast` (`mov_cast_id`, `movies_id`, `cast_id`) VALUES
 -- Table structure for table `tbl_mov_country`
 --
 
-CREATE TABLE `tbl_mov_country` (
-  `mov_country_id` mediumint(8) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `tbl_mov_country`;
+CREATE TABLE IF NOT EXISTS `tbl_mov_country` (
+  `mov_country_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT,
   `movies_id` mediumint(9) NOT NULL,
-  `country_id` smallint(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `country_id` smallint(6) NOT NULL,
+  PRIMARY KEY (`mov_country_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_mov_country`
@@ -829,11 +901,13 @@ INSERT INTO `tbl_mov_country` (`mov_country_id`, `movies_id`, `country_id`) VALU
 -- Table structure for table `tbl_mov_director`
 --
 
-CREATE TABLE `tbl_mov_director` (
-  `mov_director_id` mediumint(8) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `tbl_mov_director`;
+CREATE TABLE IF NOT EXISTS `tbl_mov_director` (
+  `mov_director_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT,
   `movies_id` mediumint(9) NOT NULL,
-  `director_id` smallint(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `director_id` smallint(6) NOT NULL,
+  PRIMARY KEY (`mov_director_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_mov_director`
@@ -868,11 +942,13 @@ INSERT INTO `tbl_mov_director` (`mov_director_id`, `movies_id`, `director_id`) V
 -- Table structure for table `tbl_mov_genre`
 --
 
-CREATE TABLE `tbl_mov_genre` (
-  `mov_genre_id` mediumint(8) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `tbl_mov_genre`;
+CREATE TABLE IF NOT EXISTS `tbl_mov_genre` (
+  `mov_genre_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT,
   `movies_id` mediumint(9) NOT NULL,
-  `genre_id` mediumint(9) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `genre_id` mediumint(9) NOT NULL,
+  PRIMARY KEY (`mov_genre_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_mov_genre`
@@ -922,11 +998,13 @@ INSERT INTO `tbl_mov_genre` (`mov_genre_id`, `movies_id`, `genre_id`) VALUES
 -- Table structure for table `tbl_mov_lang`
 --
 
-CREATE TABLE `tbl_mov_lang` (
-  `mov_lang_id` smallint(5) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `tbl_mov_lang`;
+CREATE TABLE IF NOT EXISTS `tbl_mov_lang` (
+  `mov_lang_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
   `movies_id` mediumint(9) NOT NULL,
-  `language_id` smallint(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `language_id` smallint(6) NOT NULL,
+  PRIMARY KEY (`mov_lang_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_mov_lang`
@@ -962,11 +1040,13 @@ INSERT INTO `tbl_mov_lang` (`mov_lang_id`, `movies_id`, `language_id`) VALUES
 -- Table structure for table `tbl_mov_studio`
 --
 
-CREATE TABLE `tbl_mov_studio` (
-  `mov_studio_id` mediumint(8) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `tbl_mov_studio`;
+CREATE TABLE IF NOT EXISTS `tbl_mov_studio` (
+  `mov_studio_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT,
   `movies_id` mediumint(9) NOT NULL,
-  `studio_id` smallint(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `studio_id` smallint(6) NOT NULL,
+  PRIMARY KEY (`mov_studio_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_mov_studio`
@@ -1001,10 +1081,12 @@ INSERT INTO `tbl_mov_studio` (`mov_studio_id`, `movies_id`, `studio_id`) VALUES
 -- Table structure for table `tbl_studio`
 --
 
-CREATE TABLE `tbl_studio` (
-  `studio_id` smallint(5) UNSIGNED NOT NULL,
-  `studio_name` varchar(125) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `tbl_studio`;
+CREATE TABLE IF NOT EXISTS `tbl_studio` (
+  `studio_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `studio_name` varchar(125) NOT NULL,
+  PRIMARY KEY (`studio_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_studio`
@@ -1038,9 +1120,11 @@ INSERT INTO `tbl_studio` (`studio_id`, `studio_name`) VALUES
 -- Table structure for table `tbl_urating`
 --
 
-CREATE TABLE `tbl_urating` (
-  `rating_id` tinyint(3) UNSIGNED NOT NULL,
-  `rating_number` tinyint(4) NOT NULL
+DROP TABLE IF EXISTS `tbl_urating`;
+CREATE TABLE IF NOT EXISTS `tbl_urating` (
+  `rating_id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `rating_number` tinyint(4) NOT NULL,
+  PRIMARY KEY (`rating_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1049,8 +1133,9 @@ CREATE TABLE `tbl_urating` (
 -- Table structure for table `tbl_user`
 --
 
-CREATE TABLE `tbl_user` (
-  `user_id` mediumint(8) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `tbl_user`;
+CREATE TABLE IF NOT EXISTS `tbl_user` (
+  `user_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_fname` varchar(250) NOT NULL,
   `user_name` varchar(250) NOT NULL,
   `user_pass` varchar(250) NOT NULL,
@@ -1059,8 +1144,9 @@ CREATE TABLE `tbl_user` (
   `user_ip` varchar(50) NOT NULL DEFAULT 'no',
   `user_access` tinyint(4) NOT NULL,
   `user_admin` tinyint(4) NOT NULL,
-  `user_finitial` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `user_finitial` varchar(20) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_user`
@@ -1071,228 +1157,8 @@ INSERT INTO `tbl_user` (`user_id`, `user_fname`, `user_name`, `user_pass`, `user
 (2, 'Ryan', 'ryan', 'password', 'a@a.com', '2019-02-06 17:14:53', '127.0.0.1', 5, 0, 'R'),
 (3, 'Brendan', 'brendan', 'password', 'a@a.com', '2019-02-06 17:15:35', '::1', 5, 0, 'B'),
 (4, 'Tiffany', 'tiffany', 'password', 'a@a.com', '2019-03-14 19:56:04', '::1', 1, 0, 'T');
+COMMIT;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `tbl_arating`
---
-ALTER TABLE `tbl_arating`
-  ADD PRIMARY KEY (`arating_id`);
-
---
--- Indexes for table `tbl_audio`
---
-ALTER TABLE `tbl_audio`
-  ADD PRIMARY KEY (`audio_id`);
-
---
--- Indexes for table `tbl_cast`
---
-ALTER TABLE `tbl_cast`
-  ADD PRIMARY KEY (`cast_id`),
-  ADD UNIQUE KEY `cast_name` (`cast_name`);
-
---
--- Indexes for table `tbl_comments`
---
-ALTER TABLE `tbl_comments`
-  ADD PRIMARY KEY (`comments_id`);
-
---
--- Indexes for table `tbl_country`
---
-ALTER TABLE `tbl_country`
-  ADD PRIMARY KEY (`country_id`);
-
---
--- Indexes for table `tbl_director`
---
-ALTER TABLE `tbl_director`
-  ADD PRIMARY KEY (`director_id`);
-
---
--- Indexes for table `tbl_genre`
---
-ALTER TABLE `tbl_genre`
-  ADD PRIMARY KEY (`genre_id`);
-
---
--- Indexes for table `tbl_language`
---
-ALTER TABLE `tbl_language`
-  ADD PRIMARY KEY (`lang_id`);
-
---
--- Indexes for table `tbl_movies`
---
-ALTER TABLE `tbl_movies`
-  ADD PRIMARY KEY (`movies_id`);
-
---
--- Indexes for table `tbl_mov_cast`
---
-ALTER TABLE `tbl_mov_cast`
-  ADD PRIMARY KEY (`mov_cast_id`);
-
---
--- Indexes for table `tbl_mov_country`
---
-ALTER TABLE `tbl_mov_country`
-  ADD PRIMARY KEY (`mov_country_id`);
-
---
--- Indexes for table `tbl_mov_director`
---
-ALTER TABLE `tbl_mov_director`
-  ADD PRIMARY KEY (`mov_director_id`);
-
---
--- Indexes for table `tbl_mov_genre`
---
-ALTER TABLE `tbl_mov_genre`
-  ADD PRIMARY KEY (`mov_genre_id`);
-
---
--- Indexes for table `tbl_mov_lang`
---
-ALTER TABLE `tbl_mov_lang`
-  ADD PRIMARY KEY (`mov_lang_id`);
-
---
--- Indexes for table `tbl_mov_studio`
---
-ALTER TABLE `tbl_mov_studio`
-  ADD PRIMARY KEY (`mov_studio_id`);
-
---
--- Indexes for table `tbl_studio`
---
-ALTER TABLE `tbl_studio`
-  ADD PRIMARY KEY (`studio_id`);
-
---
--- Indexes for table `tbl_urating`
---
-ALTER TABLE `tbl_urating`
-  ADD PRIMARY KEY (`rating_id`);
-
---
--- Indexes for table `tbl_user`
---
-ALTER TABLE `tbl_user`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `tbl_arating`
---
-ALTER TABLE `tbl_arating`
-  MODIFY `arating_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `tbl_audio`
---
-ALTER TABLE `tbl_audio`
-  MODIFY `audio_id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT for table `tbl_cast`
---
-ALTER TABLE `tbl_cast`
-  MODIFY `cast_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
-
---
--- AUTO_INCREMENT for table `tbl_comments`
---
-ALTER TABLE `tbl_comments`
-  MODIFY `comments_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `tbl_country`
---
-ALTER TABLE `tbl_country`
-  MODIFY `country_id` smallint(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=195;
-
---
--- AUTO_INCREMENT for table `tbl_director`
---
-ALTER TABLE `tbl_director`
-  MODIFY `director_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- AUTO_INCREMENT for table `tbl_genre`
---
-ALTER TABLE `tbl_genre`
-  MODIFY `genre_id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT for table `tbl_language`
---
-ALTER TABLE `tbl_language`
-  MODIFY `lang_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=216;
-
---
--- AUTO_INCREMENT for table `tbl_movies`
---
-ALTER TABLE `tbl_movies`
-  MODIFY `movies_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- AUTO_INCREMENT for table `tbl_mov_cast`
---
-ALTER TABLE `tbl_mov_cast`
-  MODIFY `mov_cast_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
-
---
--- AUTO_INCREMENT for table `tbl_mov_country`
---
-ALTER TABLE `tbl_mov_country`
-  MODIFY `mov_country_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-
---
--- AUTO_INCREMENT for table `tbl_mov_director`
---
-ALTER TABLE `tbl_mov_director`
-  MODIFY `mov_director_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- AUTO_INCREMENT for table `tbl_mov_genre`
---
-ALTER TABLE `tbl_mov_genre`
-  MODIFY `mov_genre_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
-
---
--- AUTO_INCREMENT for table `tbl_mov_lang`
---
-ALTER TABLE `tbl_mov_lang`
-  MODIFY `mov_lang_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
---
--- AUTO_INCREMENT for table `tbl_mov_studio`
---
-ALTER TABLE `tbl_mov_studio`
-  MODIFY `mov_studio_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- AUTO_INCREMENT for table `tbl_studio`
---
-ALTER TABLE `tbl_studio`
-  MODIFY `studio_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT for table `tbl_urating`
---
-ALTER TABLE `tbl_urating`
-  MODIFY `rating_id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `tbl_user`
---
-ALTER TABLE `tbl_user`
-  MODIFY `user_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
